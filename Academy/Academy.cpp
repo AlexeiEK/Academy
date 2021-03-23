@@ -30,7 +30,7 @@ system("chcp 65001");
                 InputStudent(students);
                 break;
             case '2': // 2. Добавить преподавателя
-                //TODO Добавить метод ввода данных о преподавателе
+                InputTeacher(teachers);
                 break;
             case '3': // 3. Добавить менеджера
                 //TODO Добавить метод ввода данных о менеджере
