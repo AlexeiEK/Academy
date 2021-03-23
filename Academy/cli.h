@@ -15,7 +15,9 @@ void ShowStudents(vector<Student> students)
 
 void ShowTeachers(vector<Teacher> teachers)
 {
-	//TODO Написать реализацию по выводу информации о преподавателях
+	for (auto teacher : teachers) {
+		ShowTeacher(teacher);
+	}
 }
 
 
