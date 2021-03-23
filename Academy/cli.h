@@ -20,8 +20,12 @@ void ShowTeachers(vector<Teacher> teachers)
 	}
 }
 
-
-//TODO Написать реализацию по выводу информации о менеджерах
+void ShowManagers(vector<Manager> managers)
+{
+	for (auto manager : managers) {
+		ShowManager(manager);
+	}
+}
 
 Sex InputSex()
 {
