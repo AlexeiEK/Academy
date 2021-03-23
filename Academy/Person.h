@@ -5,6 +5,7 @@
 using namespace std;
 
 enum Sex { Male, Female, Unknown };
+
 string SexToString(Sex sex)
 {
     switch (sex) {

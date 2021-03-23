@@ -48,6 +48,7 @@ system("chcp 65001");
                 exit = true;
                 break;
             default:
+                cout << "Вы ввели не тот номер. Введите номер от 0 до 6!";
                 break;
         }
     } while (!exit);
