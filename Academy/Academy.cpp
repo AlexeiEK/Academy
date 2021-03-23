@@ -42,7 +42,7 @@ int main()
 			ShowTeachers(teachers);
 			break;
 		case '6': // 6. Показать всех менеджеров
-			//TODO Добавить метод показа всех менеджеров
+			ShowManagers(managers);
 			break;
 		case '0': // 0. Выход
 			exit = true;
