@@ -57,6 +57,15 @@ Subject InputSubject()
 	(temp == 'G' || temp == 'g') ? temp_subject = Graphics : temp_subject = Development;
 	return temp_subject;
 }
+Position InputPosition()
+{
+	char temp;
+	Position temp_position;
+	cout << "Введите должность: D - Директор, S - менеджер ";
+	cin >> temp;
+	(temp == 'D' || temp == 'd') ? temp_position = Director : temp_position = Sales;
+	return temp_position;
+}
 
 void InputStudent(vector<Student>& students)
 {
@@ -81,4 +90,13 @@ void InputTeacher(vector<Teacher>& teachers)
 	teachers.push_back(temp);
 }
 
-//TODO Написать реализацию по вводу информации о менеджерах
+void InputManager(vector<Manager>& managers)
+{
+	Manager temp;
+	cout << "Ввод данных о сотруднике" << endl;
+	cout << "Введите имя - "; cin >> temp.personal_info.name;
+	cout << "Введите возраст - "; cin >> temp.personal_info.age;
+	temp.personal_info.sex = InputSex();
+	temp.position = InputPosition();
+	managers.push_back(temp);
+}
