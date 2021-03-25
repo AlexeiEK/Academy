@@ -1,14 +1,14 @@
 ﻿#include <iostream>
 #include <vector>
 
+#include <clocale>
+
 #include "Student.h"
 #include "Teacher.h"
 #include "Manager.h"
 
 #include "menu.h"
 #include "cli.h"
-
-using namespace std;
 
 int main()
 {
@@ -22,11 +22,11 @@ int main()
 	char select;
 	do {
 		ShowMenu();
-		cout << "Введите номер: ";
+		//cout << "Введите номер: ";
 		cin >> select;
 
 		switch (select) {
-		case '1': // 1. Добавить студента
+		case '1':  // 1. Добавить студента
 			InputStudent(students);
 			break;
 		case '2': // 2. Добавить преподавателя
@@ -48,12 +48,12 @@ int main()
 			exit = true;
 			break;
 		default:
-			cout << "Вы ввели не тот номер. Введите номер от 0 до 6!";
+			void Caution();
 			break;
 		}
 	} while (!exit);
-
-	cout << "До свидания...";
+	setlocale(LC_ALL, "rus");
+	cout << "До свидания..." << endl;
 
 	return 0;
 }

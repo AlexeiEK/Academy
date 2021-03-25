@@ -8,6 +8,11 @@
 
 using namespace std;
 
+void Caution ()
+{
+	cout << "Вы ввели не тот номер. Введите номер от 0 до 6!" << endl;
+}
+
 void ShowStudent(Student student)
 {
 	cout << "=== Информация о студенте ===" << endl;
