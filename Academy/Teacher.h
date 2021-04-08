@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 
 #include "Person.h"
 
@@ -8,9 +8,9 @@ string SubjectToString(Subject subject)
 {
     switch (subject) {
     case Graphics:
-        return "Графика";
+        return "Р“СЂР°С„РёРєР°";
     case Development:
-        return "Разработка";
+        return "Р Р°Р·СЂР°Р±РѕС‚РєР°";
     }
 }
 

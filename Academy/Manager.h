@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 
 #include "Person.h"
 
@@ -8,9 +8,9 @@ string PositionToString(Position position)
 {
     switch (position) {
     case Director:
-        return "Директор";
+        return "Р”РёСЂРµРєС‚РѕСЂ";
     case Sales:
-        return "Менеджер";
+        return "РњРµРЅРµРґР¶РµСЂ";
     }
 }
 
