@@ -34,10 +34,10 @@ int main()
 			InputStudent(students);
 			bool isWrite = WriteStudent(pathStud, students);
 			if (isWrite) {
-				cout << "1 Данные успешно записались в файл " << pathStud << endl;
+				ShowRecording(pathStud);
 			}
 			else {
-				cerr << "0 Запись в файл " << pathStud << " не удалась" << endl;
+				ShowNoRecording(pathStud);
 			}
 			break;
 		}
@@ -46,10 +46,10 @@ int main()
 			InputTeacher(teachers);
 			bool isWrite = WriteTeacher(pathTeach, teachers);
 			if (isWrite) {
-				cout << "1 Данные успешно записались в файл " << pathTeach << endl;
+				ShowRecording(pathTeach);
 			}
 			else {
-				cerr << "0 Запись в файл " << pathTeach << " не удалась" << endl;
+				ShowNoRecording(pathTeach);
 			}
 			break;
 		}
@@ -58,10 +58,10 @@ int main()
 			InputManager(managers);
 			bool isWrite = WriteManager(pathMan, managers);
 			if (isWrite) {
-				cout << "1 Данные успешно записались в файл " << pathMan << endl;
+				ShowRecording(pathMan);
 			}
 			else {
-				cerr << "0 Запись в файл " << pathMan << " не удалась" << endl;
+				ShowNoRecording(pathMan);
 			}
 			break;
 		}

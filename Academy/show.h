@@ -8,9 +8,18 @@
 
 using namespace std;
 
-void Caution ()
+void Caution()
 {
 	cout << "Вы ввели не тот номер. Введите номер от 0 до 6!" << endl;
+}
+
+void ShowRecording(string path)
+{
+	cout << "Данные успешно записались в файл " << path << endl;
+}
+void ShowNoRecording(string path)
+{
+	cerr << "Запись в файл " << path << " не удалась" << endl;
 }
 
 void ShowStudent(Student student)
