@@ -1,7 +1,6 @@
 ﻿#include <iostream>
 #include <vector>
-
-#include <clocale>
+#include <string>
 
 #include "Student.h"
 #include "Teacher.h"
@@ -18,6 +17,10 @@ int main()
 	vector<Teacher> teachers;
 	vector<Manager> managers;
 
+	string pathMan = "Manager.csv";
+	string pathTeach = "Teacher.csv";
+	string pathStud = "Student.csv";
+
 	bool exit = false;
 	char select;
 	do {
@@ -26,15 +29,42 @@ int main()
 		cin >> select;
 
 		switch (select) {
-		case '1':  // 1. Добавить студента
+		case '1':   // 1. Добавить студента
+		{
 			InputStudent(students);
+			bool isWrite = WriteStudent(pathStud, students);
+			if (isWrite) {
+				cout << "1 Данные успешно записались в файл " << pathStud << endl;
+			}
+			else {
+				cerr << "0 Запись в файл " << pathStud << " не удалась" << endl;
+			}
 			break;
+		}
 		case '2': // 2. Добавить преподавателя
+		{
 			InputTeacher(teachers);
+			bool isWrite = WriteTeacher(pathTeach, teachers);
+			if (isWrite) {
+				cout << "1 Данные успешно записались в файл " << pathTeach << endl;
+			}
+			else {
+				cerr << "0 Запись в файл " << pathTeach << " не удалась" << endl;
+			}
 			break;
+		}
 		case '3': // 3. Добавить менеджера
+		{
 			InputManager(managers);
+			bool isWrite = WriteManager(pathMan, managers);
+			if (isWrite) {
+				cout << "1 Данные успешно записались в файл " << pathMan << endl;
+			}
+			else {
+				cerr << "0 Запись в файл " << pathMan << " не удалась" << endl;
+			}
 			break;
+		}
 		case '4': // 4. Показать всех студентов
 			ShowStudents(students);
 			break;

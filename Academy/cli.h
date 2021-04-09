@@ -1,6 +1,8 @@
 #pragma once
 
 #include <vector>
+#include <fstream>
+#include <string>
 
 #include "show.h"
 
@@ -103,4 +105,74 @@ void InputManager(vector<Manager>& managers)
 	temp.personal_info.sex = InputSex();
 	temp.position = InputPosition();
 	managers.push_back(temp);
+}
+
+bool WriteStudent(string path, vector<Student>& students)
+{
+	for (auto item : students)
+	{
+
+		string message = item.personal_info.name + ";" + to_string(item.personal_info.age) + ";"
+			+ to_string(item.rating) + ";" + SexToString(item.personal_info.sex) + ";" + FacultyToString(item.faculty);
+		ofstream file;
+		file.open(path, ios_base::app);
+
+		if (file.is_open())
+		{
+			file << message << endl;
+			file.close();
+			return true;
+		}
+		else
+		{
+			file.close();
+			return false;
+		}
+	}
+}
+bool WriteTeacher(string path, vector<Teacher>& teachers)
+{
+	for (auto item : teachers)
+	{
+
+		string message = item.personal_info.name + ";" + to_string(item.personal_info.age) + ";"
+			+ SubjectToString(item.subject);
+		ofstream file;
+		file.open(path, ios_base::app);
+
+		if (file.is_open())
+		{
+			file << message << endl;
+			file.close();
+			return true;
+		}
+		else
+		{
+			file.close();
+			return false;
+		}
+	}
+}
+bool WriteManager(string path, vector<Manager>& managers)
+{
+	for (auto item : managers)
+	{
+
+		string message = item.personal_info.name + ";" + to_string(item.personal_info.age) + ";"
+			+ PositionToString(item.position);
+		ofstream file;
+		file.open(path, ios_base::app);
+
+		if (file.is_open())
+		{
+			file << message << endl;
+			file.close();
+			return true;
+		}
+		else
+		{
+			file.close();
+			return false;
+		}
+	}
 }
