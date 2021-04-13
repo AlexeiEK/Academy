@@ -112,8 +112,9 @@ bool WriteStudent(string path, vector<Student>& students)
 	for (auto item : students)
 	{
 
-		string message = item.personal_info.name + ";" + to_string(item.personal_info.age) + ";"
-			+ to_string(item.rating) + ";" + SexToString(item.personal_info.sex) + ";" + FacultyToString(item.faculty);
+		/*string message = item.personal_info.name + ";" + to_string(item.personal_info.age) + ";"
+			+ to_string(item.rating) + ";" + SexToString(item.personal_info.sex) + ";" + FacultyToString(item.faculty);*/
+		string message = item.ToString();
 		ofstream file;
 		file.open(path, ios_base::app);
 
@@ -135,8 +136,9 @@ bool WriteTeacher(string path, vector<Teacher>& teachers)
 	for (auto item : teachers)
 	{
 
-		string message = item.personal_info.name + ";" + to_string(item.personal_info.age) + ";"
-			+ SubjectToString(item.subject);
+		/*string message = item.personal_info.name + ";" + to_string(item.personal_info.age) + ";"
+			+ SubjectToString(item.subject);*/
+		string message = item.ToString();
 		ofstream file;
 		file.open(path, ios_base::app);
 
@@ -158,8 +160,9 @@ bool WriteManager(string path, vector<Manager>& managers)
 	for (auto item : managers)
 	{
 
-		string message = item.personal_info.name + ";" + to_string(item.personal_info.age) + ";"
-			+ PositionToString(item.position);
+		/*string message = item.personal_info.name + ";" + to_string(item.personal_info.age) + ";"
+			+ PositionToString(item.position);*/
+		string message = item.ToString();
 		ofstream file;
 		file.open(path, ios_base::app);
 
