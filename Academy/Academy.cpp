@@ -25,7 +25,6 @@ int main()
 	char select;
 	do {
 		ShowMenu();
-		//cout << "Введите номер: ";
 		cin >> select;
 
 		switch (select) {

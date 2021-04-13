@@ -107,6 +107,19 @@ void InputManager(vector<Manager>& managers)
 	managers.push_back(temp);
 }
 
+bool FileOpen(ofstream& file, string message)
+{
+	file << message << endl;
+	file.close();
+	return true;
+}
+
+bool FileNoOpen(ofstream& file)
+{
+	file.close();
+	return false;
+}
+
 bool WriteStudent(string path, vector<Student>& students)
 {
 	for (auto item : students)
@@ -118,7 +131,7 @@ bool WriteStudent(string path, vector<Student>& students)
 		ofstream file;
 		file.open(path, ios_base::app);
 
-		if (file.is_open())
+		/*if (file.is_open())
 		{
 			file << message << endl;
 			file.close();
@@ -128,7 +141,9 @@ bool WriteStudent(string path, vector<Student>& students)
 		{
 			file.close();
 			return false;
-		}
+		}*/
+
+		file.is_open() ? FileOpen(file, message) : FileNoOpen(file);
 	}
 }
 bool WriteTeacher(string path, vector<Teacher>& teachers)
