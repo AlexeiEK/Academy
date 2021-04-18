@@ -5,6 +5,9 @@
 #include <string>
 
 #include "show.h"
+#include "Student.h"
+#include "Teacher.h"
+#include "Manager.h"
 
 using namespace std;
 
@@ -73,7 +76,24 @@ Position InputPosition()
 	return temp_position;
 }
 
-void InputStudent(vector<Student>& students)
+bool FileOpen(string path, string message)
+{
+	ofstream file;
+	file.open(path, ios_base::app);
+	if (file.is_open())
+	{
+		file << message << endl;
+		file.close();
+		return true;
+	}
+	else
+	{
+		file.close();
+		return false;
+	}
+}
+
+Student InputStudent()
 {
 	Student temp;
 	cout << "Ввод данных о студенте" << endl;
@@ -82,10 +102,9 @@ void InputStudent(vector<Student>& students)
 	temp.personal_info.sex = InputSex();
 	cout << "Введите рейтинг - "; cin >> temp.rating;
 	temp.faculty = InputFaculty();
-	students.push_back(temp);
+	return temp;
 }
-
-void InputTeacher(vector<Teacher>& teachers)
+Teacher InputTeacher()
 {
 	Teacher temp;
 	cout << "Ввод данных о преподавателе" << endl;
@@ -93,10 +112,9 @@ void InputTeacher(vector<Teacher>& teachers)
 	cout << "Введите возраст - "; cin >> temp.personal_info.age;
 	temp.personal_info.sex = InputSex();
 	temp.subject = InputSubject();
-	teachers.push_back(temp);
+	return temp;
 }
-
-void InputManager(vector<Manager>& managers)
+ Manager InputManager()
 {
 	Manager temp;
 	cout << "Ввод данных о сотруднике" << endl;
@@ -104,20 +122,74 @@ void InputManager(vector<Manager>& managers)
 	cout << "Введите возраст - "; cin >> temp.personal_info.age;
 	temp.personal_info.sex = InputSex();
 	temp.position = InputPosition();
-	managers.push_back(temp);
+	return temp;
+}
+bool WriteToFileStudent(string path)
+{
+	string message = InputStudent().ToString();
+	FileOpen(path, message);
+}
+bool WriteToFileTeacher(string path)
+{
+	string message = InputTeacher().ToString();
+	FileOpen(path, message);
+}
+bool WriteToFileManager(string path)
+{
+	string message = InputManager().ToString();
+	FileOpen(path, message);
 }
 
-bool FileOpen(ofstream& file, string message)
+void ReadFromFileStudent(string path, vector<Student>& students)
 {
-	file << message << endl;
-	file.close();
-	return true;
+	ifstream input;
+	input.open(path);
+	if (input.is_open()) {
+		while (!input.eof()) {
+			string line;
+			getline(input, line);
+			Student student(line, ';');
+			students.push_back(student);
+		}
+	}
+	else {
+		cerr << "Error file!" << endl;
+	}
+	input.close();
 }
-
-bool FileNoOpen(ofstream& file)
+void ReadFromFileTeacher(string path, vector<Teacher>& teachers)
 {
-	file.close();
-	return false;
+	ifstream input;
+	input.open(path);
+	if (input.is_open()) {
+		while (!input.eof()) {
+			string line;
+			getline(input, line);
+			Teacher teacher(line, ';');
+			teachers.push_back(teacher);
+		}
+	}
+	else {
+		cerr << "Error file!" << endl;
+	}
+	input.close();
+}
+void ReadFromFileManager(string path, vector<Manager>& managers)
+{
+	ifstream input;
+	input.open(path);
+	if (input.is_open()) {
+		while (!input.eof()) {
+			string line;
+			getline(input, line);
+			Manager manager(line, ';');
+			managers.push_back(manager);
+		}
+	}
+	else {
+		cerr << "Error file!" << endl;
+	}
+	input.close();
 }
 
 bool WriteStudent(string path, vector<Student>& students)
@@ -128,22 +200,7 @@ bool WriteStudent(string path, vector<Student>& students)
 		/*string message = item.personal_info.name + ";" + to_string(item.personal_info.age) + ";"
 			+ to_string(item.rating) + ";" + SexToString(item.personal_info.sex) + ";" + FacultyToString(item.faculty);*/
 		string message = item.ToString();
-		ofstream file;
-		file.open(path, ios_base::app);
-
-		/*if (file.is_open())
-		{
-			file << message << endl;
-			file.close();
-			return true;
-		}
-		else
-		{
-			file.close();
-			return false;
-		}*/
-
-		file.is_open() ? FileOpen(file, message) : FileNoOpen(file);
+		FileOpen(path, message);
 	}
 }
 bool WriteTeacher(string path, vector<Teacher>& teachers)
@@ -154,20 +211,7 @@ bool WriteTeacher(string path, vector<Teacher>& teachers)
 		/*string message = item.personal_info.name + ";" + to_string(item.personal_info.age) + ";"
 			+ SubjectToString(item.subject);*/
 		string message = item.ToString();
-		ofstream file;
-		file.open(path, ios_base::app);
-
-		if (file.is_open())
-		{
-			file << message << endl;
-			file.close();
-			return true;
-		}
-		else
-		{
-			file.close();
-			return false;
-		}
+		FileOpen(path, message);
 	}
 }
 bool WriteManager(string path, vector<Manager>& managers)
@@ -178,19 +222,6 @@ bool WriteManager(string path, vector<Manager>& managers)
 		/*string message = item.personal_info.name + ";" + to_string(item.personal_info.age) + ";"
 			+ PositionToString(item.position);*/
 		string message = item.ToString();
-		ofstream file;
-		file.open(path, ios_base::app);
-
-		if (file.is_open())
-		{
-			file << message << endl;
-			file.close();
-			return true;
-		}
-		else
-		{
-			file.close();
-			return false;
-		}
+		FileOpen(path, message);
 	}
 }
